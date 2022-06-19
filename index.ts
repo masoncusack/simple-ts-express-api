@@ -103,18 +103,13 @@ function cheatCode(userInput: string | Number): string {
     }
   } else if (typeof userInput === "number") {
     return `You entered ${userInput}, so you win ${userInput} dollars!`;
-  } else{
+  } else {
     return "Invalid cheat code.";
   }
 }
 
 const cheatCodeSchema: Joi.Schema = Joi.object({
-  cheatCode: Joi
-    .string()
-    .alphanum()
-    .required()
-    .min(3)
-    .max(20)
+  cheatCode: Joi.string().alphanum().required().min(3).max(20),
 });
 
 app.post("/api/cheat", (req, res) => {
